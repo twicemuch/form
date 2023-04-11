@@ -1,0 +1,19 @@
+
+.container {
+    width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(161, 170, 170, 0.829);
+    height: 80px;
+    border-radius: 6px;
+    padding: 0.5em;
+}
+span {
+    text-transform: capitalize;
+    color: rgb(209, 29, 38);
+    font-size: 18px;
+    font-family: tahoma;
+}
+p {
+    font-family: sans-serif;
+}
