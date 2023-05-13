@@ -1,19 +1,71 @@
 
+body {
+    background-image: url('calc.jpg');
+   background-image: linear-gradient(to right, rgb(223, 189, 189), rgb(54, 54, 58));
+}
+
 .container {
-    width: 400px;
+    min-width: 60%;
     text-align: center;
     margin: 0 auto;
-    background-color: rgba(161, 170, 170, 0.829);
-    height: 80px;
+    background-image: linear-gradient(to right, green, red);
+    min-height: 130px;
     border-radius: 6px;
     padding: 0.5em;
+    box-shadow: 5px 10px 8px #504c4c;
 }
-span {
+.innerContainer {
+    display: flex;
+    justify-content: space-between;
+}
+span,
+.hidden {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0.2rem;
     text-transform: capitalize;
-    color: rgb(209, 29, 38);
+    color: #000;
     font-size: 18px;
     font-family: tahoma;
+    display: none;
+}
+h2 {
+    color: #000;
 }
 p {
     font-family: sans-serif;
+}
+#calculate {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.2rem .5rem;
+}
+#inputSalary,
+#inputAllowance,
+.output {
+    display: block;
+    outline: none;
+    padding: 0.5rem .5rem;
+    border-radius: 5px;
+    background: none;
+    background-color: #000;
+    color: white;
+}
+
+.output {
+    display: block;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 18px;
+}
+.title {
+    color: white;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    margin-bottom: "";
+}
+.white {
+    color: white;
 }

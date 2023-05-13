@@ -8,11 +8,47 @@
     </head>
     <body>
         <div class="container">
-        <p>Your tax liability is: <span id="taxAmount"></span></p>
+            <h2>Zambian PAYE Calculator</h2>
+        <p class="hidden">Your tax liability is: <span id="taxAmount"></span></p>
+        <div class="innerContainer">
+            <div class="iput">
         <form action="">
-            <input type="text" id="inputSalary"placeholder="Enter gross salary...">
-            <input type="button" id="calculate" value="PAYE!">
+            
+        <div class="input">
+            <p class="title">Basic Salary</p>
+            <input type="text" id="inputSalary"placeholder="Enter basic salary...">
+        </div>
+
+        <div class="input">
+            <p class="title">Allowances</p>
+            <input type="text" class="white" id="inputAllowance" placeholder="Enter allowances...">
+        </div>
         </form>
+    </div>
+        <div class="button">
+            <input type="button" id="calculate" value="PAYE!">
+
+        </div>
+        <div class="results">
+        <form action="">
+        <div class="name">
+            <p class="title">pre-tax Deductions</p>
+            <input type="text" class="output" id="preTax-deduction">
+        </div>
+
+        <div class="name">
+            <p class="title">Taxable Amount</p>
+            <input type="text" class="output" id="taxableValue">
+        </div>
+
+        <div class="name">
+            <p class="title">PAYE</p>
+            <input value=" " class="output" id= "taxPayable">
+        </div>
+            
+        </form>
+    </div>
+    </div>
         </div>
 
         <script src="script.js"></script>
