@@ -1,6 +1,7 @@
 
 const taxAmount = document.getElementById("taxAmount");
 const paye = document.getElementById("calculate");
+const taxPayable = document.getElementById("taxPayable");
 
 
 const napsa = 0.05;
@@ -10,12 +11,13 @@ const nextBracket = 0.3;
 const lastBracket = 0.375;
 const bandOne = 2000;
 const bandTwo = 2100;
-const napsaCeiling = 1342;
+const napsaCeiling = 1221.80;
 const nhima = 0.01;
 
 function taxCalculator(emoluments) {
+  
   //var napsaValue = emoluments*napsa;
-  var beforeTax = emoluments - preTaxDeductions();
+  //var beforeTax = emoluments - preTaxDeductions();
    var tax = 0;
 
   /*if (napsaValue >= napsaCeiling) {
@@ -25,52 +27,47 @@ function taxCalculator(emoluments) {
   } else {
     var postNapsa = emoluments - napsaValue;
   }*/
-
-  if(beforeTax <= taxThreshold) {
-    console.log(napsaValue);
+  if(emoluments <= 0) {
     //taxAmount.innerHTML = "k" + 0;
-    return taxAmount.innerHTML =  0 + " ZMK";
+    taxPayable.value = 0 + " ZMK";
+    return 0;
+    
     
   } else {
-    var taxable = beforeTax - taxThreshold;
-    console.log(taxable);
-    if(taxable < bandOne) {
-      tax = taxable * firstBracket;
-
-      console.log("PAYE = " + tax);
-      
-
+    //var taxable = beforeTax - taxThreshold;
+    //console.log(taxable);
+    if(emoluments < bandOne) {
+      tax = emoluments * firstBracket;
     } else {
-      var tax1 = bandOne * firstBracket;
-      tax += tax1;
-      console.log(taxable + " ??");
-      var minusFb = taxable - bandOne;
+      tax = bandOne * firstBracket;
+      
+      //tax = tax1;
+      var minusFb = emoluments - bandOne;
       console.log(minusFb);
-      console.log("taxable is: " + taxable);
+
     }
   }
 
     //second tax band calculation(tax @30%).
     if(minusFb > bandTwo) {
-     var secondTax = bandTwo * nextBracket;
-     tax += secondTax;
-     var tax3 = minusFb - bandTwo; 
-     console.log(taxable);
+     //var secondTax = bandTwo * nextBracket;
+     tax = tax + (bandTwo * nextBracket);
+     var tax3 = minusFb - bandTwo;
     } else if(minusFb < bandTwo) {
-      secondTax = tax * nextBracket;
+      secondTax = minusFb * nextBracket;
       tax += secondTax;
-      console.log(secondTax);
     };
     
     //Balance over(tx @37.5%).
     if(tax3 > 0) {
       var finalTax = tax3 * lastBracket;
       tax += finalTax;
-      console.log(tax3 + " why");
+      console.log(tax + " final-tax")
+      
     };
     
 var answer = tax;
-var finalAnswer = taxAmount.innerHTML = answer + " ZMK";
+var finalAnswer = answer;
 return finalAnswer;
 };
 
@@ -86,23 +83,25 @@ function findGross() {
 return gross;
 }
 findGross();
-const grossTotal = findGross();
 
  function preTaxDeductions() {
   const inputSalary = document.getElementById("inputSalary");
   const allowances = document.getElementById("inputAllowance");
   if(allowances.value) {
     let nhimaValue = +inputSalary.value * nhima;
-    let napsaValue = grossTotal * napsa;
-    let total = nhimaValue + napsaValue;
-    return total;
-  } else {
-    let nhimaValue = grossTotal * nhima;
-    let napsaValue = grossTotal * napsa;
+    let napsaValue = findGross() * napsa;
     if(napsaValue > napsaCeiling) {
       napsaValue = napsaCeiling;
-    }
-    let total = nhimaValue + napsaValue;
+    };
+    var total = nhimaValue + napsaValue + taxCalculator(findTaxable());
+    return total;
+  } else {
+    let nhimaValue = findGross() * nhima;
+    let napsaValue = findGross() * napsa;
+    if(napsaValue > napsaCeiling) {
+      napsaValue = napsaCeiling;
+    };
+    total = nhimaValue + napsaValue + taxCalculator(findTaxable());
     return total;
   }
   
@@ -110,10 +109,10 @@ const grossTotal = findGross();
  preTaxDeductions();
 
  function findTaxable() {
-  let deductions = preTaxDeductions();
-  let taxableValue = grossTotal - deductions;
-  if(taxableValue > taxThreshold) {
-    let taxable = taxableValue -taxThreshold;
+  //let deductions = preTaxDeductions();
+  //let taxableValue = findGross() - deductions;
+  if(findGross() > taxThreshold) {
+    let taxable = findGross() -taxThreshold;
     
     return taxable;
   } else {
@@ -126,27 +125,24 @@ const grossTotal = findGross();
 
 paye.addEventListener("click",() => {
   const inputSalary = document.getElementById("inputSalary"); 
-  taxCalculator(grossTotal);
+  taxCalculator(findTaxable());
   //inputSalary.value = "";
 
 });
 
 paye.addEventListener("click",() => {
   const taxPayable = document.getElementById("taxPayable");
-  taxPayable.value = taxAmount.innerHTML;
+  //taxPayable.value = taxAmount.innerHTML;
+  taxPayable.value = taxCalculator(findTaxable()).toFixed(2) + " ZMK";
+  
 });
 
 paye.addEventListener("click",() => {
   const pretax = document.getElementById("preTax-deduction");
-  pretax.value = preTaxDeductions() + " ZMK";
+  pretax.value = preTaxDeductions().toFixed(2) + " ZMK";
 });
 
 paye.addEventListener("click",() => {
   const taxableInput = document.getElementById("taxableValue");
-  taxableInput.value = findTaxable() + " ZMK";
-})
-
-
-
-
-
+  taxableInput.value = findTaxable().toFixed(2) + " ZMK";
+});

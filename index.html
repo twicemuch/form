@@ -5,25 +5,28 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        <main role="main">
         <div class="container">
             <h2>Zambian PAYE Calculator</h2>
         <p class="hidden">Your tax liability is: <span id="taxAmount"></span></p>
         <div class="innerContainer">
             <div class="iput">
-        <form action="">
-            
-        <div class="input">
+    <form action="">
+        <div class="gross">    
+          <div class="input">
             <p class="title">Basic Salary</p>
-            <input type="text" id="inputSalary"placeholder="Enter basic salary...">
-        </div>
+            <input type="text" id="inputSalary" class="smallscreen-width" placeholder="Enter basic salary...">
+           </div>
 
-        <div class="input">
+          <div class="input">
             <p class="title">Allowances</p>
-            <input type="text" class="white" id="inputAllowance" placeholder="Enter allowances...">
+            <input type="text" class="white smallscreen-width" id="inputAllowance" placeholder="Enter allowances...">
+          </div>
         </div>
-        </form>
+    </form>
     </div>
         <div class="button">
             <input type="button" id="calculate" value="PAYE!">
@@ -32,24 +35,63 @@
         <div class="results">
         <form action="">
         <div class="name">
-            <p class="title">pre-tax Deductions</p>
-            <input type="text" class="output" id="preTax-deduction">
+            <p class="title">Total Deductions</p>
+            <input type="text" class="output smallscreen-width" id="preTax-deduction">
         </div>
 
         <div class="name">
             <p class="title">Taxable Amount</p>
-            <input type="text" class="output" id="taxableValue">
+            <input type="text" class="output smallscreen-width" id="taxableValue">
         </div>
 
         <div class="name">
             <p class="title">PAYE</p>
-            <input value=" " class="output" id= "taxPayable">
+            <input value=" " class="output smallscreen-width" id= "taxPayable">
         </div>
             
         </form>
     </div>
     </div>
-        </div>
+    <table>
+        <caption>TAX BANDS FOR THE CHARGE YEAR 2023</caption>
+        <tr>
+        <th class="br-top1">Tax Bands</th>
+        <th>Chargeable Amount</th>
+        <th class="br-top2">Tax Rate</th>
+        </tr>
+        <tr>
+        <td>First K4800</td>
+        <td>K4800 @</td>
+        <td>0%</td>
+        
+        </tr>
+            <tr>
+                <td>Next K4800.01-6800</td>
+                <td>K2000 @</td>
+                <td>20%</td>
+                </tr>  
+        </tr>
+        <tr>
+            <td>Next K6800.01-8900</td>
+            <td>K2100 @</td>
+            <td>30%</td>
+        </tr>
+        <tr>
+            <td class="br-bottom1">Excess over K8900</td>
+            <td>Balance @</td>
+            <td class="br-bottom2">37.5%</td>
+        </tr>
+
+        </table>
+
+
+ </div>
+ </main>
+ <footer class="last-sec">
+    <i class="fa fa-linkedin"></i>
+    <a href="mailto:brianmund01@gmail.com"><i class="fa fa-envelope"></i></a>
+    <p><i class="fa fa-copyright"></i> 2023 Brian Mundu. All rights reserved.</p>
+ </footer>
 
         <script src="script.js"></script>
     

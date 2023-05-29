@@ -18,6 +18,7 @@ body {
     display: flex;
     justify-content: space-between;
 }
+
 span,
 .hidden {
     background-color: #fff;
@@ -68,4 +69,72 @@ p {
 }
 .white {
     color: white;
+}
+table {
+    width: 80%;
+    min-width: 100%;
+    margin: 0 auto;
+}
+td, th {
+    font-family: monospace, serif;
+    padding: 2px;
+    border: thin dotted white;
+    background-color: #222;
+    color: white;
+}
+.br-top1 {
+    border-top-left-radius: 5px;
+}
+.br-top2 {
+    border-top-right-radius: 5px;
+}
+caption {
+    margin-top: 2rem;
+    color: #000;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 18px;
+}
+footer p {
+    font-family: monospace;
+    margin-top: 0;
+}
+footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.fa-linkedin,
+.fa-envelope {
+    background: rgb(248, 228, 228);
+    border-radius: 50%;
+    padding: 0.2rem;
+    height: 1rem;
+    width: 1rem;
+}
+a i {
+    color: black;
+}
+@media (max-width: 452px) {
+    .container {
+        min-width: 80%;
+    }
+    .innerContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    #calculate {
+        margin-top: 1.25rem;
+    }
+    td,th {
+        padding: .2px;
+        font-size: 13px;
+    }
+    caption {
+        font-size: 16px;
+    }
+
+    
 }
