@@ -1,12 +1,13 @@
 
 body {
     background-image: url('calc.jpg');
-   background-image: linear-gradient(to right, rgb(223, 189, 189), rgb(54, 54, 58));
+    background-image: linear-gradient(to right, rgb(223, 189, 189), rgb(54, 54, 58));
 }
 
 .container {
     min-width: 60%;
     max-width: 90%;
+    height: 90%;
     text-align: center;
     margin: 0 auto;
     background-image: linear-gradient(to right, green, red);
@@ -126,7 +127,7 @@ footer {
 a i {
     color: black;
 }
-@media (max-width: 577px) {
+@media (max-width: 646px) {
     .container {
         min-width: 90%;
     }
@@ -150,4 +151,21 @@ a i {
     }
 
     
+}
+@media (max-width: 289px) {
+    input {
+        width: 60%;
+        margin: 0 auto;
+    }
+    #calculate {
+        width: 100%;
+    }
+    td,th {
+        padding: .1px;
+        font-size: 10px;
+    }
+    caption {
+        font-size: 16px;
+    }
+
 }
